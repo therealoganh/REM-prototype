@@ -1,0 +1,16 @@
+# Godot
+.import/
+*.import
+*.import/
+*.godot.import
+.godot/
+.mono/
+*.tmp
+*.log
+
+# UID / Metadata that shouldn’t be versioned
+*.uid
+
+# OS / Editor
+.DS_Store
+Thumbs.db
