@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://iy71das47cqx"]
+
+[ext_resource type="Texture2D" uid="uid://d4jby6by1ck6u" path="res://art/player_placeholder.png" id="1_qsh3u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8kua"]
+radius = 17.0
+
+[node name="Sheep" type="Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x8kua")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(197.00002, 81.999985)
+scale = Vector2(2.9375, 3.125)
+texture = ExtResource("1_qsh3u")

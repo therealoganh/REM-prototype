@@ -5,15 +5,16 @@
 [node name="Main" type="Node"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_top = 327.0
-offset_right = 612.0
-offset_bottom = 700.0
+offset_left = -660.0
+offset_top = 433.0
+offset_right = -48.0
+offset_bottom = 806.0
 texture = ExtResource("1_ig7tw")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-offset_left = -104.0
-offset_top = -9.0
-offset_right = 508.0
-offset_bottom = 364.0
+offset_left = -671.0
+offset_top = -4.0
+offset_right = -59.0
+offset_bottom = 369.0
 texture = ExtResource("1_ig7tw")
 flip_h = true

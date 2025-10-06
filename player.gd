@@ -1,7 +1,6 @@
 extends Area2D
 
 @export var speed: float = 100 # pixels/sec
-
 func keep_player_onscreen():
 	# Limit player movement to stay on screen
 	var half_width = 16
