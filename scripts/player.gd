@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 100
+@export var speed = 400
 @onready var _animated_player = $AnimatedSprite2D
 
 func get_input():

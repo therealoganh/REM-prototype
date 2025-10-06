@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://rxb881vc4ijo"]
 
-[ext_resource type="Script" uid="uid://bnex22dbf81j5" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://bnex22dbf81j5" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://lt8jix338byb" path="res://art/player_spritesheet.png" id="2_onrkg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
@@ -40,25 +40,27 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(29, 30)
+size = Vector2(21, 24)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 5
 position = Vector2(179, 320)
+collision_layer = 2
 script = ExtResource("1_onrkg")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1jxqw")
 animation = &"float"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = 0
-limit_right = 360
-limit_bottom = 640
+limit_right = 480
+limit_bottom = 480
+limit_smoothed = true
 position_smoothing_enabled = true

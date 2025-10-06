@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3qa6qkel0kxw"]
+
+[ext_resource type="PackedScene" uid="uid://gvuekvekvlxv" path="res://scenes/sky3_background.tscn" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://7ueprwqeiifr" path="res://scripts/main.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://rxb881vc4ijo" path="res://scenes/player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://b2h8xl4f27uap" path="res://scenes/sheep_pickup.tscn" id="3_sugp2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h2yge"]
+distance = -84.0
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_jyhfs")
+sheep_scene = ExtResource("3_sugp2")
+
+[node name="Sky3" parent="." instance=ExtResource("1_0wfyh")]
+
+[node name="Collisions" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_h2yge")
+
+[node name="TopBound" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(236.175, 86.405)
+rotation = -3.1415927
+shape = SubResource("WorldBoundaryShape2D_h2yge")
+
+[node name="LeftBound" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(87, 244)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_h2yge")
+
+[node name="RightBound" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(399, 244)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_h2yge")
+
+[node name="BottomBound" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(228, 396)
+shape = SubResource("WorldBoundaryShape2D_h2yge")
+
+[node name="Player" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(238, 248)
+
+[node name="Sheep" parent="." instance=ExtResource("3_sugp2")]
+z_index = 4
+position = Vector2(234, 312)
+
+[node name="SheepSpawnTimer" type="Timer" parent="."]
