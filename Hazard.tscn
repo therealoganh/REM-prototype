@@ -1,33 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkj7o8npdm61s"]
 
-[ext_resource type="Script" uid="uid://drn1yopj76phd" path="res://hazard.gd" id="1_ljgm1"]
+[ext_resource type="Script" uid="uid://dqu1s7f82kptl" path="res://hazard.gd" id="1_ljgm1"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_sr5y0"]
 
-[node name="Hazard" type="Node2D"]
-
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(73, 47)
-scale = Vector2(10, 10)
-collision_layer = 15
-collision_mask = 15
-gravity_space_override = 1
-gravity_point = true
-gravity_point_unit_distance = 10.571
-gravity_point_center = Vector2(500, 500)
-gravity_direction = Vector2(500, 500)
-gravity = -168.907
-linear_damp_space_override = 1
-linear_damp = 100.0
-angular_damp_space_override = 1
+[node name="Hazard" type="Area2D"]
 script = ExtResource("1_ljgm1")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Area2D"]
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(0.29999998, -0.39999998)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D/RigidBody2D/CollisionShape2D"]
-position = Vector2(-6.2, -1.9999999)
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D/CollisionShape2D"]
+position = Vector2(74.7, -28.6)
 scale = Vector2(17.000002, 24.300001)
 texture = SubResource("AnimatedTexture_sr5y0")
