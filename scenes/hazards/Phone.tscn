@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkj7o8npdm61s"]
+
+[ext_resource type="Script" uid="uid://de4a323rhjiwp" path="res://scripts/hazard-scripts/phone.gd" id="1_ljgm1"]
+[ext_resource type="Texture2D" uid="uid://dffyb4wtlafax" path="res://art/Phone.png" id="2_wf14v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wf14v"]
+size = Vector2(15, 24)
+
+[node name="Hazard" type="Area2D"]
+position = Vector2(55, -25)
+script = ExtResource("1_ljgm1")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(0.29999998, -0.39999998)
+collision_mask = 2
+gravity_scale = 0.044
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(1.5, 3.875)
+texture = ExtResource("2_wf14v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(2.2000008, 3.3999996)
+shape = SubResource("RectangleShape2D_wf14v")
