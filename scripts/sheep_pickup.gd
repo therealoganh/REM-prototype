@@ -1,20 +1,15 @@
 extends Area2D
 
-@export var speed: float = 100.0
+@export var fall_speed: float = 50.0
+var drift_speed = 20.0
+var time = 0.0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.y = speed * delta
-	
-	# Clean up when off screen
-	if position.y > get_viewport_rect().size.y + 50:
-		queue_free()
-	
+	time += delta
+	position.y += fall_speed * delta
+	position.x += sin(time * 2.0) * drift_speed * delta
 
-func _on_body_entered(body: Node2D) -> void:
-	queue_free()
+	# remove when offscreen
+	var screen_height = get_viewport_rect().size.y
+	if position.y > screen_height + 50:
+		queue_free()
