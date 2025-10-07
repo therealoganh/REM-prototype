@@ -1,62 +1,59 @@
 extends CharacterBody2D
 
-@export var speed: float = 100 # pixels/sec
-func keep_player_onscreen():
-	# Limit player movement to stay on screen
-	var half_width = 16
-	var half_height = 16
+@export var move_speed: float = 200.0
+@export var dodge_speed: float = 600.0
+@export var dodge_duration: float = 0.2
+@export var max_health: int = 3
 
-	var screen_width = get_viewport_rect().size.x
-	var screen_height = get_viewport_rect().size.y
-	
-	position.x = clamp(position.x, half_width, screen_width - half_width)
-	position.y = clamp(position.y, half_height, screen_height - half_height)
+var health: int
+var is_dodging: bool = false
+var dodge_direction: Vector2 = Vector2.ZERO
 
+@onready var dodge_timer: Timer = $DodgeTimer
 
-func player_controls(delta):
-	var velocity = Vector2.ZERO
-	
-	# Base upward float
-	var base_up = speed
-	
-	# Input
-	if Input.is_action_pressed("move_down"):
-		velocity.y = speed # Constant downward speed
-	else:
-		velocity.y = -base_up # Float up
-
-	if Input.is_action_pressed("move_up"):
-		velocity.y -= speed * 0.8 # Extra boost
-	
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= speed
-	
-	if Input.is_action_pressed("move_right"):
-		velocity.x += speed
-		
-	# Normalize input for diagonal movement
-	if velocity.x != 0 and velocity.y != 0:
-		velocity = velocity.normalized() * speed
-
-	# Move player
-	position += velocity * delta
-	
-	# Clamp to screen
-	var half_size = $Sprite2D.texture.get_size() / 2
-	var screen_size = get_viewport_rect().size
-	position.x = clamp(position.x, half_size.x, screen_size.x - half_size.x)
-	position.y = clamp(position.y, half_size.y, screen_size.y - half_size.y)
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	health = max_health
+	dodge_timer.wait_time = dodge_duration
+	dodge_timer.one_shot = true
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	handle_input()
+	if not is_dodging:
+		move_and_slide()
+	else:
+		velocity = dodge_direction * dodge_speed
+		move_and_slide()
 
-	# Keeps the player from going out of bounds
-	#keep_player_onscreen()
-	
-	player_controls(delta)
-	
+func handle_input() -> void:
+	var input_dir = Vector2.ZERO
+	input_dir.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input_dir.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input_dir = input_dir.normalized()
+
+	if not is_dodging:
+		velocity = input_dir * move_speed
+
+		if Input.is_action_just_pressed("dodge") and input_dir != Vector2.ZERO:
+			start_dodge(input_dir)
+
+func start_dodge(direction: Vector2) -> void:
+	is_dodging = true
+	dodge_direction = direction
+	dodge_timer.start()
+
+func _on_DodgeTimer_timeout() -> void:
+	is_dodging = false
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("hurt") and not is_dodging:
+		take_damage(1)
+
+func take_damage(amount: int) -> void:
+	health -= amount
+	print("Player hit! Health:", health)
+	if health <= 0:
+		die()
+
+func die() -> void:
+	print("Player died!")
+	queue_free()

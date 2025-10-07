@@ -15,3 +15,5 @@ texture = ExtResource("1_4flbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_onrkg")
+
+[node name="DodgeTimer" type="Timer" parent="."]
