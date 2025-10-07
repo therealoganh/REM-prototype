@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2h8xl4f27uap"]
+
+[ext_resource type="Texture2D" uid="uid://bgq7h3iddpfca" path="res://icon.svg" id="1_76xep"]
+[ext_resource type="Script" uid="uid://b82n7vcqr5dax" path="res://scripts/sheep_pickup.gd" id="1_mt5f1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35tuw"]
+size = Vector2(34, 33)
+
+[node name="Sheep" type="Area2D"]
+position = Vector2(229, -27)
+collision_mask = 2
+script = ExtResource("1_mt5f1")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.296875, 0.296875)
+texture = ExtResource("1_76xep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_35tuw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
