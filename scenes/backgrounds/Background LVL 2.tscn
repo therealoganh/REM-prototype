@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj8ixgrh5pste"]
+
+[ext_resource type="Shader" uid="uid://rs2sm1ycu4x4" path="res://shaders/cloud_shader.gdshader" id="1_tqjso"]
+[ext_resource type="Texture2D" uid="uid://drm5a1ik1ubek" path="res://art/background_art/Level 2 Sky Trans.png" id="2_het82"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b38on"]
+shader = ExtResource("1_tqjso")
+
+[node name="Node2D" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.30280158, 0.46322465, 1, 1)
+
+[node name="Clouds" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.8392157)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_b38on")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -236.0
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_het82")

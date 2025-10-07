@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3qa6qkel0kxw"]
+[gd_scene load_steps=8 format=3 uid="uid://c3qa6qkel0kxw"]
 
-[ext_resource type="PackedScene" uid="uid://gvuekvekvlxv" path="res://scenes/sky3_background.tscn" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://7ueprwqeiifr" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://rxb881vc4ijo" path="res://scenes/player.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://b2h8xl4f27uap" path="res://scenes/sheep_pickup.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://cb8j1fhf1k0jv" path="res://scenes/backgrounds/Background LVL 4.tscn" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://m71us3c88hod" path="res://scenes/sheep_pickup.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://dkj7o8npdm61s" path="res://scenes/hazards/Phone.tscn" id="3_tbgi4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
 
@@ -13,8 +14,7 @@ distance = -84.0
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jyhfs")
 sheep_scene = ExtResource("3_sugp2")
-
-[node name="Sky3" parent="." instance=ExtResource("1_0wfyh")]
+hazard_scene = ExtResource("3_tbgi4")
 
 [node name="Collisions" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_h2yge")
@@ -39,10 +39,13 @@ position = Vector2(228, 396)
 shape = SubResource("WorldBoundaryShape2D_h2yge")
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
+z_index = 11
 position = Vector2(238, 248)
+collision_mask = 3
 
-[node name="Sheep" parent="." instance=ExtResource("3_sugp2")]
-z_index = 4
-position = Vector2(234, 312)
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
 
-[node name="SheepSpawnTimer" type="Timer" parent="."]
+[node name="Node2D2" parent="." instance=ExtResource("3_jyhfs")]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://gvuekvekvlxv"]
 
-[ext_resource type="Shader" uid="uid://rs2sm1ycu4x4" path="res://shaders/sky3_repeat.gdshader" id="1_mbgf0"]
+[ext_resource type="Shader" uid="uid://rs2sm1ycu4x4" path="res://shaders/cloud_shader.gdshader" id="1_mbgf0"]
 [ext_resource type="Texture2D" uid="uid://drfqi0p7jl8n0" path="res://art/Level 3 Sky trans.png" id="2_npn62"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u6esa"]

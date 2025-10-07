@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb8j1fhf1k0jv"]
+
+[ext_resource type="Texture2D" uid="uid://cvvmju0e43yw" path="res://art/background_art/Starry Sky Trans.png" id="1_u88ld"]
+[ext_resource type="Shader" uid="uid://rs2sm1ycu4x4" path="res://shaders/cloud_shader.gdshader" id="2_qxgag"]
+[ext_resource type="Texture2D" uid="uid://drm5a1ik1ubek" path="res://art/background_art/Level 2 Sky Trans.png" id="3_6auxw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b38on"]
+shader = ExtResource("2_qxgag")
+
+[node name="Node2D" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.09104251, 0.009756103, 0.29694656, 1)
+
+[node name="Stars" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -240.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_u88ld")
+
+[node name="Clouds" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.29411766)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_b38on")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -236.0
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_6auxw")
