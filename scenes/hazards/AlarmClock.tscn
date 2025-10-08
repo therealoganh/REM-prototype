@@ -1,24 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://dia4o4kyumg1c"]
+[gd_scene load_steps=5 format=3 uid="uid://cmlpcl56ng3ti"]
 
-[ext_resource type="Script" uid="uid://de4a323rhjiwp" path="res://scripts/hazard-scripts/phone.gd" id="1_6017i"]
-[ext_resource type="Texture2D" uid="uid://cg0g7w4abugkq" path="res://art/Clock.png" id="2_5unpg"]
+[ext_resource type="Script" uid="uid://yvctj7lebqcc" path="res://scripts/hazard-scripts/clock.gd" id="1_3510i"]
+[ext_resource type="Texture2D" uid="uid://cg0g7w4abugkq" path="res://art/Clock.png" id="2_vo2mk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wf14v"]
-size = Vector2(15, 24)
+[sub_resource type="CircleShape2D" id="CircleShape2D_6017i"]
+radius = 15.508062
 
-[node name="Hazard" type="Area2D"]
-position = Vector2(55, -25)
-script = ExtResource("1_6017i")
+[sub_resource type="CircleShape2D" id="CircleShape2D_5unpg"]
+radius = 15.0
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(0.29999998, -0.39999998)
+[node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 4
 collision_mask = 2
-gravity_scale = 0.044
+gravity_scale = 0.167
+script = ExtResource("1_3510i")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-position = Vector2(1.5, 3.875)
-texture = ExtResource("2_5unpg")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vo2mk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(2.2000008, 3.3999996)
-shape = SubResource("RectangleShape2D_wf14v")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("CircleShape2D_6017i")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_5unpg")
+
+[node name="GameOverTimer" type="Timer" parent="Hitbox"]
+wait_time = 0.6
+one_shot = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Hitbox/GameOverTimer" to="." method="_on_game_over_timer_timeout"]

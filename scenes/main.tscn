@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://rxb881vc4ijo" path="res://scenes/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cb8j1fhf1k0jv" path="res://scenes/backgrounds/Background LVL 4.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://m71us3c88hod" path="res://scenes/sheep_pickup.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://dkj7o8npdm61s" path="res://scenes/hazards/Phone.tscn" id="3_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cmlpcl56ng3ti" path="res://scenes/hazards/AlarmClock.tscn" id="3_tbgi4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
 
@@ -17,6 +17,7 @@ sheep_scene = ExtResource("3_sugp2")
 hazard_scene = ExtResource("3_tbgi4")
 
 [node name="Collisions" type="StaticBody2D" parent="."]
+collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_h2yge")
 
 [node name="TopBound" type="CollisionShape2D" parent="Collisions"]
@@ -41,11 +42,11 @@ shape = SubResource("WorldBoundaryShape2D_h2yge")
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 z_index = 11
 position = Vector2(238, 248)
-collision_mask = 3
+collision_mask = 1
 
 [node name="SpawnTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="Node2D2" parent="." instance=ExtResource("3_jyhfs")]
+[node name="Sky3" parent="." instance=ExtResource("3_jyhfs")]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

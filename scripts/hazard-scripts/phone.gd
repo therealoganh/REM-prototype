@@ -9,3 +9,7 @@ func _process(delta: float) -> void:
 	var screen_height = get_viewport_rect().size.y
 	if position.y > screen_height + 50:
 		queue_free()
+
+
+func _on_body_entered(body):
+	print("You died!")
