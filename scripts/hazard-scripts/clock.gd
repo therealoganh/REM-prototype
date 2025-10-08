@@ -1,11 +1,27 @@
-extends Area2D
+extends RigidBody2D
 
-@export var fall_speed : float = 1.0  # pixels per second
+signal hit # Test signal
 
-func _process(delta: float) -> void:
-	position.y += fall_speed * delta
-	
+@export var fall_speed : float = 20.0  # pixels per second
+@onready var game_over_timer: Timer = $Hitbox/GameOverTimer
+
+func _ready():
+	linear_velocity = Vector2(0, fall_speed) # Let physics move the body
+
+func _physics_process(delta: float) -> void:
+
 	# remove when offscreen
 	var screen_height = get_viewport_rect().size.y
-	if position.y > screen_height + 50:
+	if global_position.y > screen_height + 50:
 		queue_free()
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	print("You died!")
+	hit.emit() # Emit signal
+	Engine.time_scale = 0.5 # Slow mo on death
+	body.hide()
+	game_over_timer.start()
+
+func _on_game_over_timer_timeout() -> void:
+	Engine.time_scale = 1.0 # Reset time scale
+	get_tree().reload_current_scene()

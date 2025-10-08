@@ -40,12 +40,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(21, 24)
+size = Vector2(28, 31)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 position = Vector2(179, 320)
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_onrkg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -53,7 +54,7 @@ sprite_frames = SubResource("SpriteFrames_1jxqw")
 animation = &"float"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
