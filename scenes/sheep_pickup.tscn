@@ -7,6 +7,7 @@
 size = Vector2(21, 23)
 
 [node name="SheepPickup" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_mt5f1")
 
 [node name="BottomSheep" type="Sprite2D" parent="."]
@@ -22,3 +23,5 @@ texture = ExtResource("2_mt5f1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_35tuw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
