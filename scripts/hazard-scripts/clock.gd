@@ -2,7 +2,7 @@ extends RigidBody2D
 
 signal hit # Test signal
 
-@export var fall_speed : float = 20.0  # pixels per second
+@export var fall_speed : float = 5.0  # pixels per second
 @onready var game_over_timer: Timer = $Hitbox/GameOverTimer
 
 func _ready():
