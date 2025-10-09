@@ -25,3 +25,4 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 func _on_game_over_timer_timeout() -> void:
 	Engine.time_scale = 1.0 # Reset time scale
 	get_tree().reload_current_scene()
+	Global.score = 0

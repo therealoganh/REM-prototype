@@ -19,4 +19,6 @@ func _process(delta):
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
+		Global.score +=1 ; #Increment global score variable
+		print("Sheep count:", Global.score)
 		queue_free()
