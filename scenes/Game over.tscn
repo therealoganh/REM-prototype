@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw5rjx415rp1t"]
+
+[ext_resource type="Script" uid="uid://cm3hlnp8gntjs" path="res://scenes/game_over.gd" id="1_pelvw"]
+
+[sub_resource type="Gradient" id="Gradient_1gxjt"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pelvw"]
+gradient = SubResource("Gradient_1gxjt")
+fill_from = Vector2(1, 0)
+
+[node name="Game over" type="Node2D"]
+script = ExtResource("1_pelvw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(240, 245)
+scale = Vector2(7.3125005, 7.21875)
+texture = SubResource("GradientTexture2D_pelvw")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 196.0
+offset_top = 167.0
+offset_right = 286.0
+offset_bottom = 211.0
+theme_override_font_sizes/font_size = 22
+text = "Game Over"
+
+[node name="Label" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 58.0
+offset_right = 114.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 10
+text = "Press Enter "
+horizontal_alignment = 1
