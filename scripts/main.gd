@@ -3,11 +3,15 @@ extends Node2D
 @export var sheep_scene: PackedScene
 
 @export var hazard_scene: PackedScene
+
 @export var clock_scene: PackedScene
 @export var phone_scene: PackedScene
+@export var lightningbolt_scene: PackedScene
+@export var thermostat_scene: PackedScene
 
 @export var sheep_spawn_interval: float = 1
-@export var hazard_spawn_interval: float = 1
+@export var hazard1_spawn_interval: float = 1
+@export var hazard2_spawn_interval: float = 1
 
 var sheep_timer: float = 0.0
 var hazard_timer: float = 0.0
@@ -27,7 +31,8 @@ func _ready() -> void:
 		print("ERROR: No hazard scene assigned!")
 	else:
 		print("Sheep spawner ready – will spawn sheep every", sheep_spawn_interval, "seconds")
-		print("Hazard spawner ready – will spawn hazard every", hazard_spawn_interval, "seconds")
+		print("Hazard spawner ready – will spawn hazard every", hazard1_spawn_interval, "seconds")
+		print("Hazard spawner ready – will spawn hazard every", hazard2_spawn_interval, "seconds")
 
 func _process(delta):
 	
@@ -43,7 +48,7 @@ func _process(delta):
 	hazard_timer -= delta
 	if hazard_timer <= 0:
 		spawn_hazard()
-		hazard_timer = hazard_spawn_interval
+		hazard_timer = hazard1_spawn_interval
 
 func spawn_sheep():
 
@@ -57,8 +62,15 @@ func spawn_sheep():
 	print("Spawned sheep at:", sheep.position)
 	
 func spawn_hazard():
+	
 	var hazard1 = clock_scene.instantiate()
 	var hazard2 = phone_scene.instantiate()
+	
+	if Global.score > 3:
+		hazard1 = lightningbolt_scene.instantiate()
+		hazard2 = thermostat_scene.instantiate()
+	
+	
 	
 	hazard1.z_index = 9
 	hazard2.z_index = 9
@@ -70,7 +82,3 @@ func spawn_hazard():
 	add_child(hazard2)
 	print("Spawned hazard1 at:", hazard1.position)
 	print("Spawned hazard2 at:", hazard1.position)
-
-
-func _on_editor_state_changed() -> void:
-	pass # Replace with function body.

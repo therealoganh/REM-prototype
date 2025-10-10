@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3qa6qkel0kxw"]
+[gd_scene load_steps=12 format=3 uid="uid://c3qa6qkel0kxw"]
 
-[ext_resource type="Script" uid="uid://7ueprwqeiifr" path="res://scripts/main.gd" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://cuo148robggtf" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://rxb881vc4ijo" path="res://scenes/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://m71us3c88hod" path="res://scenes/sheep_pickup.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://b2hpx0b762m3b" path="res://scenes/hazards/hazard_spawner.tscn" id="3_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://cmlpcl56ng3ti" path="res://scenes/hazards/AlarmClock.tscn" id="4_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://bg63pagwjck3u" path="res://scenes/backgrounds/backgrounds_group.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dl5rpkqqjgm23" path="res://scenes/hazards/Phone.tscn" id="5_tipki"]
+[ext_resource type="PackedScene" uid="uid://dovr1sqbayrrl" path="res://scenes/hazards/LightningBolt.tscn" id="6_tipki"]
+[ext_resource type="PackedScene" uid="uid://c6bi75cvira86" path="res://scenes/hazards/Thermostat.tscn" id="7_85g3d"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
 
@@ -19,6 +21,8 @@ sheep_scene = ExtResource("3_sugp2")
 hazard_scene = ExtResource("3_tbgi4")
 clock_scene = ExtResource("4_o6xl0")
 phone_scene = ExtResource("5_tipki")
+lightningbolt_scene = ExtResource("6_tipki")
+thermostat_scene = ExtResource("7_85g3d")
 
 [node name="Collisions" type="StaticBody2D" parent="."]
 collision_mask = 2
