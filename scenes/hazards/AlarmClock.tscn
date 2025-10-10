@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmlpcl56ng3ti"]
 
 [ext_resource type="Script" uid="uid://yvctj7lebqcc" path="res://scripts/hazard-scripts/clock.gd" id="1_3510i"]
-[ext_resource type="Texture2D" uid="uid://cg0g7w4abugkq" path="res://art/Clock.png" id="2_vo2mk"]
+[ext_resource type="Texture2D" uid="uid://cg0g7w4abugkq" path="res://art/hazard_art/Clock.png" id="2_vo2mk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6017i"]
 radius = 15.508062

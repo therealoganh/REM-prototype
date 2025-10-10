@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d10id65icibww"]
 
-[ext_resource type="Texture2D" uid="uid://m23owuaoo5l4" path="res://art/background_art/Level 1 sky Trans.png" id="2_1x5c4"]
+[ext_resource type="Texture2D" uid="uid://drm5a1ik1ubek" path="res://art/background_art/Level 2 Sky Trans.png" id="2_jmt2s"]
 [ext_resource type="Shader" uid="uid://rs2sm1ycu4x4" path="res://shaders/cloud_shader.gdshader" id="2_pgcxf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b38on"]
@@ -26,4 +26,4 @@ offset_top = -236.0
 offset_bottom = 244.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_1x5c4")
+texture = ExtResource("2_jmt2s")

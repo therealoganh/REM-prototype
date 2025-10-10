@@ -2,14 +2,18 @@ extends Node2D
 
 @export var sheep_scene: PackedScene
 @export var hazard_scene: PackedScene
-@export var sheep_spawn_interval: float = 3.0
-@export var hazard_spawn_interval: float = 2
-#@export var hazard_min_speed: float = 150.0
-#@export var hazard_max_speed: float = 300.0
+@export var sheep_spawn_interval: float = 0.5
+@export var hazard_spawn_interval: float = 10
+
 var sheep_timer: float = 0.0
 var hazard_timer: float = 0.0
 
+# for background switching
+@onready var backgrounds = $Backgrounds
+
 func _ready() -> void:
+	
+	Global.score = 0
 	
 	# Sheep check
 	if sheep_scene == null:
@@ -22,11 +26,14 @@ func _ready() -> void:
 
 func _process(delta):
 	
+	backgrounds.background_switcher()
+	
 	# Sheep & Hazard timer logic
 	sheep_timer -= delta
 	if sheep_timer <= 0:
 		spawn_sheep()
 		sheep_timer = sheep_spawn_interval
+		
 		
 	hazard_timer -= delta
 	if hazard_timer <= 0:
@@ -53,3 +60,7 @@ func spawn_hazard():
 	
 	add_child(hazard)
 	print("Spawned hazard at:", hazard.position)
+
+
+func _on_editor_state_changed() -> void:
+	pass # Replace with function body.
