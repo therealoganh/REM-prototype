@@ -17,8 +17,6 @@ distance = -84.0
 script = ExtResource("1_jyhfs")
 sheep_scene = ExtResource("3_sugp2")
 hazard_scene = ExtResource("3_tbgi4")
-sheep_spawn_interval = null
-hazard_spawn_interval = null
 
 [node name="Collisions" type="StaticBody2D" parent="."]
 collision_mask = 2
@@ -49,10 +47,11 @@ position = Vector2(238, 248)
 collision_mask = 1
 
 [node name="Label" type="Label" parent="Player"]
-offset_left = -120.0
-offset_top = -120.0
-offset_right = -65.0
-offset_bottom = -59.0
+offset_left = -26.0
+offset_top = -93.0
+offset_right = 22.0
+offset_bottom = -38.0
+text = "Score:"
 script = ExtResource("5_o6xl0")
 
 [node name="SpawnTimer" type="Timer" parent="."]
@@ -61,5 +60,6 @@ autostart = true
 [node name="Sky3" parent="." instance=ExtResource("3_jyhfs")]
 
 [node name="Game over" parent="." instance=ExtResource("6_tefeu")]
+position = Vector2(0, 32)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

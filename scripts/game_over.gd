@@ -7,3 +7,4 @@ func _process(delta):
 		print("Restarting game...")
 		
 		get_tree().change_scene_to_file("res://scenes/main.tscn")
+		NewScript.score = 0

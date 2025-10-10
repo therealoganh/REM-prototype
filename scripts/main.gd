@@ -1,12 +1,12 @@
 extends Node2D
-@onready var label = Label
-var newscore = str(NewScript.score)
+@onready var label = $Label
+@onready var newscore = str(NewScript.score)
 @export var sheep_scene: PackedScene
 @export var hazard_scene: PackedScene
 @export var sheep_spawn_interval: float = 3.0
 @export var hazard_spawn_interval: float = 2
-#@export var hazard_min_speed: float = 150.0
-#@export var hazard_max_speed: float = 300.0
+@export var hazard_min_speed: float = 150.0
+@export var hazard_max_speed: float = 300.0
 var sheep_timer: float = 0.0
 var hazard_timer: float = 0.0
 

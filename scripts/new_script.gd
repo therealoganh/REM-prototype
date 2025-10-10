@@ -1,4 +1,8 @@
+# Global.gd
 extends Node
 
-
-var score = 0
+signal score_changed(new_score)
+var score: int = 0:
+	set(value):
+		score = value
+		score_changed.emit(score)
