@@ -1,15 +1,20 @@
 extends Node2D
 
 @export var sheep_scene: PackedScene
+
 @export var hazard_scene: PackedScene
-@export var sheep_spawn_interval: float = 0.5
-@export var hazard_spawn_interval: float = 10
+@export var clock_scene: PackedScene
+@export var phone_scene: PackedScene
+
+@export var sheep_spawn_interval: float = 1
+@export var hazard_spawn_interval: float = 1
 
 var sheep_timer: float = 0.0
 var hazard_timer: float = 0.0
 
 # for background switching
 @onready var backgrounds = $Backgrounds
+
 
 func _ready() -> void:
 	
@@ -52,14 +57,19 @@ func spawn_sheep():
 	print("Spawned sheep at:", sheep.position)
 	
 func spawn_hazard():
-	var hazard = hazard_scene.instantiate()
+	var hazard1 = clock_scene.instantiate()
+	var hazard2 = phone_scene.instantiate()
 	
-	hazard.z_index = 9
+	hazard1.z_index = 9
+	hazard2.z_index = 9
 	var screen_size = get_viewport_rect().size
-	hazard.position = Vector2(randf_range(0, screen_size.x), -50)
+	hazard1.position = Vector2(randf_range(0, screen_size.x), -50)
+	hazard2.position = Vector2(randf_range(0, screen_size.x), -50)
 	
-	add_child(hazard)
-	print("Spawned hazard at:", hazard.position)
+	add_child(hazard1)
+	add_child(hazard2)
+	print("Spawned hazard1 at:", hazard1.position)
+	print("Spawned hazard2 at:", hazard1.position)
 
 
 func _on_editor_state_changed() -> void:

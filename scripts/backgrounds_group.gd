@@ -7,15 +7,18 @@ extends CanvasGroup
 
 func background_switcher():
 	if Global.score == 0:
-		remove_child(sky2)
-		remove_child(sky3)
-		remove_child(sky4)
-	if Global.score > 1:
-		remove_child(sky1)
-		add_child(sky2)
-	if Global.score > 3:
-		remove_child(sky2)
-		add_child(sky3)
-	if Global.score > 5:
-		remove_child(sky3)
-		add_child(sky4)
+		show_only(sky1)
+	elif Global.score > 1 and Global.score <= 3:
+		show_only(sky2)
+	elif Global.score > 3 and Global.score <= 5:
+		show_only(sky3)
+	elif Global.score > 5:
+		show_only(sky4)
+
+func show_only(target: Node):
+	for child in [sky1, sky2, sky3, sky4]:
+		if child.get_parent() == self:
+			remove_child(child)
+	
+	if target.get_parent() != self:
+		add_child(target)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2hpx0b762m3b"]
+
+[ext_resource type="PackedScene" uid="uid://cmlpcl56ng3ti" path="res://scenes/hazards/AlarmClock.tscn" id="1_dbgrq"]
+[ext_resource type="PackedScene" uid="uid://dl5rpkqqjgm23" path="res://scenes/hazards/Phone.tscn" id="2_hi6j2"]
+
+[node name="HazardSpawner" type="Node2D"]
+
+[node name="AlarmClock" parent="." instance=ExtResource("1_dbgrq")]
+
+[node name="Phone" parent="." instance=ExtResource("2_hi6j2")]
