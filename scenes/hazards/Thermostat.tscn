@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dle0ss8io68jw"]
+
+[ext_resource type="Script" uid="uid://g4xafxdll8gy" path="res://scripts/hazard-scripts/clock.gd" id="1_qepvo"]
+[ext_resource type="Texture2D" path="res://art/hazard_art/Thermostat.png" id="2_qepvo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8h0bd"]
+size = Vector2(11, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07sib"]
+size = Vector2(11, 29)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 2
+gravity_scale = 0.167
+script = ExtResource("1_qepvo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qepvo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_8h0bd")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_07sib")
+
+[node name="GameOverTimer" type="Timer" parent="Hitbox"]
+wait_time = 0.6
+one_shot = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Hitbox/GameOverTimer" to="." method="_on_game_over_timer_timeout"]
