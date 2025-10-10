@@ -3,6 +3,7 @@ extends Area2D
 @export var fall_speed: float = 50.0
 
 @onready var sheep = $TopSheep
+const BLACK_SHEEP = preload("res://art/Blacksheep.png")
 
 var drift_speed = 20.0
 var time = 0.0
@@ -10,7 +11,7 @@ var time = 0.0
 func sheep_swap():
 	
 	if Global.score > 5:
-		sheep.texture = preload("res://art/Blacksheep.png")
+		sheep.texture = BLACK_SHEEP
 		
 
 func _process(delta):
