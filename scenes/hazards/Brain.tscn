@@ -1,34 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6bi75cvira86"]
+[gd_scene load_steps=5 format=3 uid="uid://ci02nm2lvfwcn"]
 
-[ext_resource type="Script" uid="uid://g4xafxdll8gy" path="res://scripts/hazard-scripts/clock.gd" id="1_qepvo"]
-[ext_resource type="Texture2D" uid="uid://d4l7axp7b1cme" path="res://art/hazard_art/Thermostat.png" id="2_qepvo"]
+[ext_resource type="Script" uid="uid://g4xafxdll8gy" path="res://scripts/hazard-scripts/clock.gd" id="1_sowhd"]
+[ext_resource type="Texture2D" uid="uid://dkuu54xokh6qe" path="res://art/hazard_art/Brain.png" id="2_sowhd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8h0bd"]
-size = Vector2(11, 29)
+[sub_resource type="CircleShape2D" id="CircleShape2D_d61iv"]
+radius = 15.508062
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_07sib"]
-size = Vector2(11, 29)
+[sub_resource type="CircleShape2D" id="CircleShape2D_xcpa5"]
+radius = 15.0
 
 [node name="RigidBody2D" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 2
 gravity_scale = 0.167
-script = ExtResource("1_qepvo")
+script = ExtResource("1_sowhd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_qepvo")
+texture = ExtResource("2_sowhd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_8h0bd")
+shape = SubResource("CircleShape2D_d61iv")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_07sib")
+shape = SubResource("CircleShape2D_xcpa5")
 
 [node name="GameOverTimer" type="Timer" parent="Hitbox"]
 wait_time = 0.6

@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2v5ya23p12jd"]
+
+[ext_resource type="Script" uid="uid://g4xafxdll8gy" path="res://scripts/hazard-scripts/clock.gd" id="1_bxm3x"]
+[ext_resource type="Texture2D" uid="uid://ctqn5xu5s0xga" path="res://art/hazard_art/Rooster.png" id="2_bxm3x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5xjk"]
+size = Vector2(21.5, 22.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pu8gj"]
+size = Vector2(22, 22.25)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 2
+gravity_scale = 0.167
+script = ExtResource("1_bxm3x")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.5529412)
+scale = Vector2(1.06, 1.06)
+texture = ExtResource("2_bxm3x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bxm3x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.75, -2.75)
+shape = SubResource("RectangleShape2D_b5xjk")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1, -2.875)
+shape = SubResource("RectangleShape2D_pu8gj")
+
+[node name="GameOverTimer" type="Timer" parent="Hitbox"]
+wait_time = 0.6
+one_shot = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Hitbox/GameOverTimer" to="." method="_on_game_over_timer_timeout"]

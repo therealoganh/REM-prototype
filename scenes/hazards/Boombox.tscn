@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bexhaucvjxqhv"]
+
+[ext_resource type="Script" uid="uid://g4xafxdll8gy" path="res://scripts/hazard-scripts/clock.gd" id="1_jw7nu"]
+[ext_resource type="Texture2D" uid="uid://by6wp4t1x2dxs" path="res://art/hazard_art/Boom Box.png" id="2_jw7nu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q52d6"]
+size = Vector2(28, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6lv8"]
+size = Vector2(28, 27)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 2
+gravity_scale = 0.167
+script = ExtResource("1_jw7nu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jw7nu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_q52d6")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_m6lv8")
+
+[node name="GameOverTimer" type="Timer" parent="Hitbox"]
+wait_time = 0.6
+one_shot = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Hitbox/GameOverTimer" to="." method="_on_game_over_timer_timeout"]

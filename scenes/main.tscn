@@ -1,14 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3qa6qkel0kxw"]
+[gd_scene load_steps=15 format=3 uid="uid://c3qa6qkel0kxw"]
 
 [ext_resource type="Script" uid="uid://cuo148robggtf" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://rxb881vc4ijo" path="res://scenes/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://m71us3c88hod" path="res://scenes/sheep_pickup.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://b2hpx0b762m3b" path="res://scenes/hazards/hazard_spawner.tscn" id="3_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://cmlpcl56ng3ti" path="res://scenes/hazards/AlarmClock.tscn" id="4_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://bg63pagwjck3u" path="res://scenes/backgrounds/backgrounds_group.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dl5rpkqqjgm23" path="res://scenes/hazards/Phone.tscn" id="5_tipki"]
 [ext_resource type="PackedScene" uid="uid://dovr1sqbayrrl" path="res://scenes/hazards/LightningBolt.tscn" id="6_tipki"]
 [ext_resource type="PackedScene" uid="uid://c6bi75cvira86" path="res://scenes/hazards/Thermostat.tscn" id="7_85g3d"]
+[ext_resource type="PackedScene" uid="uid://ci02nm2lvfwcn" path="res://scenes/hazards/Brain.tscn" id="7_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://bexhaucvjxqhv" path="res://scenes/hazards/Boombox.tscn" id="8_trceg"]
+[ext_resource type="PackedScene" uid="uid://dhho21kdpuhqm" path="res://scenes/hazards/Sunrise.tscn" id="9_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://b2v5ya23p12jd" path="res://scenes/hazards/Rooster.tscn" id="10_jkv2x"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
 
@@ -18,11 +21,15 @@ distance = -84.0
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jyhfs")
 sheep_scene = ExtResource("3_sugp2")
-hazard_scene = ExtResource("3_tbgi4")
 clock_scene = ExtResource("4_o6xl0")
 phone_scene = ExtResource("5_tipki")
 lightningbolt_scene = ExtResource("6_tipki")
 thermostat_scene = ExtResource("7_85g3d")
+brain_scene = ExtResource("7_eb6dy")
+boombox_scene = ExtResource("8_trceg")
+sunrise_scene = ExtResource("9_a8y0u")
+rooster_scene = ExtResource("10_jkv2x")
+hazard2_spawn_interval = 0.8
 
 [node name="Collisions" type="StaticBody2D" parent="."]
 collision_mask = 2

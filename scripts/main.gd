@@ -2,12 +2,17 @@ extends Node2D
 
 @export var sheep_scene: PackedScene
 
-@export var hazard_scene: PackedScene
-
+# Hazards
 @export var clock_scene: PackedScene
 @export var phone_scene: PackedScene
 @export var lightningbolt_scene: PackedScene
 @export var thermostat_scene: PackedScene
+@export var brain_scene: PackedScene
+@export var boombox_scene: PackedScene
+@export var sunrise_scene: PackedScene
+@export var rooster_scene: PackedScene
+
+
 
 @export var sheep_spawn_interval: float = 1
 @export var hazard1_spawn_interval: float = 1
@@ -27,7 +32,7 @@ func _ready() -> void:
 	# Sheep check
 	if sheep_scene == null:
 		print("ERROR: No sheep scene assigned!")
-	elif hazard_scene == null:
+	elif clock_scene == null:
 		print("ERROR: No hazard scene assigned!")
 	else:
 		print("Sheep spawner ready – will spawn sheep every", sheep_spawn_interval, "seconds")
@@ -66,10 +71,15 @@ func spawn_hazard():
 	var hazard1 = clock_scene.instantiate()
 	var hazard2 = phone_scene.instantiate()
 	
-	if Global.score > 3:
+	if Global.score > 1:
 		hazard1 = lightningbolt_scene.instantiate()
 		hazard2 = thermostat_scene.instantiate()
-	
+	if Global.score > 3:
+		hazard1 = boombox_scene.instantiate()
+		hazard2 = brain_scene.instantiate()
+	if Global.score > 5:
+		hazard1 = sunrise_scene.instantiate()
+		hazard2 = rooster_scene.instantiate()
 	
 	
 	hazard1.z_index = 9
