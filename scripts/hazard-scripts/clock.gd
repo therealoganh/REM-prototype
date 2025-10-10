@@ -8,7 +8,7 @@ signal hit # Test signal
 func _ready():
 	linear_velocity = Vector2(0, fall_speed) # Let physics move the body
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 
 	# remove when offscreen
 	var screen_height = get_viewport_rect().size.y
@@ -25,4 +25,3 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 func _on_game_over_timer_timeout() -> void:
 	Engine.time_scale = 1.0 # Reset time scale
 	get_tree().reload_current_scene()
-	Global.score = 0

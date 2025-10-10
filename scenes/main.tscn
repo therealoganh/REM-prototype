@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3qa6qkel0kxw"]
+[gd_scene load_steps=10 format=3 uid="uid://c3qa6qkel0kxw"]
 
 [ext_resource type="Script" uid="uid://7ueprwqeiifr" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://rxb881vc4ijo" path="res://scenes/player.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://cb8j1fhf1k0jv" path="res://scenes/backgrounds/Background LVL 4.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://m71us3c88hod" path="res://scenes/sheep_pickup.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://cmlpcl56ng3ti" path="res://scenes/hazards/AlarmClock.tscn" id="3_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://b2hpx0b762m3b" path="res://scenes/hazards/hazard_spawner.tscn" id="3_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cmlpcl56ng3ti" path="res://scenes/hazards/AlarmClock.tscn" id="4_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://bg63pagwjck3u" path="res://scenes/backgrounds/backgrounds_group.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dl5rpkqqjgm23" path="res://scenes/hazards/Phone.tscn" id="5_tipki"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
 
@@ -15,6 +17,8 @@ distance = -84.0
 script = ExtResource("1_jyhfs")
 sheep_scene = ExtResource("3_sugp2")
 hazard_scene = ExtResource("3_tbgi4")
+clock_scene = ExtResource("4_o6xl0")
+phone_scene = ExtResource("5_tipki")
 
 [node name="Collisions" type="StaticBody2D" parent="."]
 collision_mask = 2
@@ -47,6 +51,7 @@ collision_mask = 1
 [node name="SpawnTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="Sky3" parent="." instance=ExtResource("3_jyhfs")]
+[node name="Backgrounds" parent="." instance=ExtResource("5_tbgi4")]
 
+[connection signal="editor_state_changed" from="." to="." method="_on_editor_state_changed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

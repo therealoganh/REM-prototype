@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://bg63pagwjck3u"]
+
+[ext_resource type="Script" uid="uid://shvqj0hjea55" path="res://scripts/backgrounds_group.gd" id="1_14686"]
+[ext_resource type="PackedScene" uid="uid://d10id65icibww" path="res://scenes/backgrounds/Background LVL 1.tscn" id="2_hwoyl"]
+[ext_resource type="PackedScene" uid="uid://cj8ixgrh5pste" path="res://scenes/backgrounds/Background LVL 2.tscn" id="3_idrog"]
+[ext_resource type="PackedScene" uid="uid://cof6e0mlouolo" path="res://scenes/backgrounds/Background LVL 3.tscn" id="4_l24le"]
+[ext_resource type="PackedScene" uid="uid://cb8j1fhf1k0jv" path="res://scenes/backgrounds/Background LVL 4.tscn" id="5_cdswd"]
+
+[node name="Backgrounds" type="CanvasGroup"]
+script = ExtResource("1_14686")
+
+[node name="Sky1" parent="." instance=ExtResource("2_hwoyl")]
+
+[node name="Sky2" parent="." instance=ExtResource("3_idrog")]
+
+[node name="Sky3" parent="." instance=ExtResource("4_l24le")]
+
+[node name="Sky4" parent="." instance=ExtResource("5_cdswd")]
