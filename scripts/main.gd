@@ -1,5 +1,6 @@
 extends Node2D
-
+@onready var label = Label
+var newscore = str(NewScript.score)
 @export var sheep_scene: PackedScene
 @export var hazard_scene: PackedScene
 @export var sheep_spawn_interval: float = 3.0
@@ -21,6 +22,7 @@ func _ready() -> void:
 		print("Hazard spawner ready – will spawn hazard every", hazard_spawn_interval, "seconds")
 
 func _process(delta):
+	
 	
 	# Sheep & Hazard timer logic
 	sheep_timer -= delta
