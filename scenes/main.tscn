@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c3qa6qkel0kxw"]
+[gd_scene load_steps=16 format=3 uid="uid://c3qa6qkel0kxw"]
 
 [ext_resource type="Script" uid="uid://cuo148robggtf" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://rxb881vc4ijo" path="res://scenes/player.tscn" id="2_0xm2m"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bexhaucvjxqhv" path="res://scenes/hazards/Boombox.tscn" id="8_trceg"]
 [ext_resource type="PackedScene" uid="uid://dhho21kdpuhqm" path="res://scenes/hazards/Sunrise.tscn" id="9_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://b2v5ya23p12jd" path="res://scenes/hazards/Rooster.tscn" id="10_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://dq16c7ws6ecov" path="res://scenes/bg_music.tscn" id="13_trceg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
 
@@ -29,7 +30,6 @@ brain_scene = ExtResource("7_eb6dy")
 boombox_scene = ExtResource("8_trceg")
 sunrise_scene = ExtResource("9_a8y0u")
 rooster_scene = ExtResource("10_jkv2x")
-hazard2_spawn_interval = 0.8
 
 [node name="Collisions" type="StaticBody2D" parent="."]
 collision_mask = 2
@@ -63,6 +63,10 @@ collision_mask = 1
 autostart = true
 
 [node name="Backgrounds" parent="." instance=ExtResource("5_tbgi4")]
+
+[node name="BgMusic" parent="." instance=ExtResource("13_trceg")]
+volume_db = -24.807
+autoplay = true
 
 [connection signal="editor_state_changed" from="." to="." method="_on_editor_state_changed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

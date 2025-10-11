@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq16c7ws6ecov"]
+
+[ext_resource type="AudioStream" uid="uid://dh06oli6bdk5k" path="res://sounds/Battle Music.ogg" id="1_f6gl3"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer"]
+stream = ExtResource("1_f6gl3")

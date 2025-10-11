@@ -15,8 +15,8 @@ extends Node2D
 
 
 @export var sheep_spawn_interval: float = 1
-@export var hazard1_spawn_interval: float = 1
-@export var hazard2_spawn_interval: float = 1
+@export var hazard1_spawn_interval: float = 0.857
+@export var hazard2_spawn_interval: float = 0.857
 
 var sheep_timer: float = 0.0
 var hazard_timer: float = 0.0
