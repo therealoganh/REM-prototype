@@ -44,7 +44,7 @@ func _process(delta):
 	
 	backgrounds.background_switcher()
 	
-	score_label.text = "Sheep collected: %s" % NewScript.score
+	score_label.text = "%s" % NewScript.score
 	
 	# Sheep & Hazard timer logic
 	sheep_timer -= delta

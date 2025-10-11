@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="REM-prototype"
-run/main_scene="uid://c3qa6qkel0kxw"
+run/main_scene="uid://cxvj2ve1ppkd7"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://b24v8q8sffu6d"
 
 [autoload]
 
