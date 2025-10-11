@@ -23,11 +23,12 @@ var hazard_timer: float = 0.0
 
 # for background switching
 @onready var backgrounds = $Backgrounds
+@onready var score_label = $CanvasLayer/Label
 
 
 func _ready() -> void:
 	
-	Global.score = 0
+	NewScript.score = 0
 	
 	# Sheep check
 	if sheep_scene == null:
@@ -42,6 +43,8 @@ func _ready() -> void:
 func _process(delta):
 	
 	backgrounds.background_switcher()
+	
+	score_label.text = "Sheep collected: %s" % NewScript.score
 	
 	# Sheep & Hazard timer logic
 	sheep_timer -= delta
@@ -71,13 +74,13 @@ func spawn_hazard():
 	var hazard1 = clock_scene.instantiate()
 	var hazard2 = phone_scene.instantiate()
 	
-	if Global.score > 1:
+	if NewScript.score > 1:
 		hazard1 = lightningbolt_scene.instantiate()
 		hazard2 = thermostat_scene.instantiate()
-	if Global.score > 3:
+	if NewScript.score > 3:
 		hazard1 = boombox_scene.instantiate()
 		hazard2 = brain_scene.instantiate()
-	if Global.score > 5:
+	if NewScript.score > 5:
 		hazard1 = sunrise_scene.instantiate()
 		hazard2 = rooster_scene.instantiate()
 	

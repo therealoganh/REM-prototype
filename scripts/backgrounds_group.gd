@@ -6,13 +6,13 @@ extends CanvasGroup
 @onready var sky4 = $Sky4
 
 func background_switcher():
-	if Global.score == 0:
+	if NewScript.score == 0:
 		show_only(sky1)
-	elif Global.score > 1 and Global.score <= 3:
+	elif NewScript.score > 1 and NewScript.score <= 3:
 		show_only(sky2)
-	elif Global.score > 3 and Global.score <= 5:
+	elif NewScript.score > 3 and NewScript.score <= 5:
 		show_only(sky3)
-	elif Global.score > 5:
+	elif NewScript.score > 5:
 		show_only(sky4)
 
 func show_only(target: Node):

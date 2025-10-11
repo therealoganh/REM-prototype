@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://scripts/global.gd"
 BgMusic="res://scenes/bg_music.tscn"
+NewScript="*res://scripts/will-scripts/new_script.gd"
 
 [display]
 

@@ -21,7 +21,11 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	Engine.time_scale = 0.5 # Slow mo on death
 	body.hide()
 	game_over_timer.start()
+	NewScript.score = 0
+	
+	
+	
 
 func _on_game_over_timer_timeout() -> void:
 	Engine.time_scale = 1.0 # Reset time scale
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/will-scenes/Start screen.tscn")

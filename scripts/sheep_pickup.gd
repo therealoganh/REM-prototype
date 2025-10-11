@@ -10,7 +10,7 @@ var time = 0.0
 
 func sheep_swap():
 	
-	if Global.score > 5:
+	if NewScript.score > 5:
 		sheep.texture = BLACK_SHEEP
 		
 
@@ -31,6 +31,8 @@ func _process(delta):
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		Global.score +=1 ; #Increment global score variable
-		print("Sheep count:", Global.score)
+		
+		NewScript.score += 1 # Increment the global score by 1
+		print("Current Score: ", NewScript.score)
+
 		queue_free()
